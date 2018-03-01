@@ -1,7 +1,7 @@
 % feature_extract
 cd ../matlab
 vl_setupnn;
-cd ../new
+cd ../ReSW
 
 data_folder = 'D:/imagesearch/'; % oxford5k,paris6k, holidays should be in here
 
@@ -17,7 +17,7 @@ im_folder = [data_folder, dataset, '/'];
 % modelfn = 'imagenet-caffe-alex.mat';   lid = 15;				% use AlexNet
 modelfn = 'imagenet-matconvnet-vgg-verydeep-16.mat';  lid = 31;		% use VGG
 net = load(['../' modelfn]);
-% net.layers = {net.layers{1:lid}}; % remove fully connected layers
+net.layers = {net.layers{1:lid}}; % remove fully connected layers
 
 num_images = size(imlist,1);
 images_vgg_cnn = cell(1,num_images);
